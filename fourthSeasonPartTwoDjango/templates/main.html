@@ -1,0 +1,63 @@
+{% extends 'layout-vertical.html' %}
+
+{% block header %}
+    时间序列模型：开始页
+{% endblock %}
+
+{% block title %}
+    <div class="page-pretitle">
+        开始
+    </div>
+    <h2 class="page-title">
+        从这里开始
+    </h2>
+{% endblock %}
+
+{% block body %}
+    <div class="col-md-12 col-lg-9">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">一键使用全部</h3>
+                <p class="text-muted">在这里选择风机编号（1-20）和作为训练集的时间段，以及需要预测的值（ROUND(A.POWER,0)或YD15）</p>
+                <p>选择好之后，点击确认</p>
+                <form>
+                    <div class="mb-3">
+                     <div class="mb-3">
+                            <div class="form-label">选择风机</div>
+                            <select class="form-select" name="index">
+                                                        {% for motor in motor_list %}
+                                <option value="{{ motor }}">{{ motor }}</option>
+                        {% endfor %}
+                            </select>
+
+                        </div>
+                    <div class="mb-3">
+                        <label class="form-label">起始时间</label>
+                        <input type="text" class="form-control" name="day_start"
+                               placeholder="格式示例20210202" value="20210202">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">结束时间</label>
+                        <input type="text" class="form-control" name="day_end"
+                               placeholder="格式示例20210203" value="20210203">
+                    </div>
+                                            <div class="mb-3">
+                            <div class="form-label">选择指标</div>
+                            <select class="form-select" name="col">
+                                {% for col in col_list %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Card footer -->
+            <div class="card-footer">
+                <a href="/wait/" class="btn btn-primary">一键拟合</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

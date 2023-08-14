@@ -1,0 +1,75 @@
+{% extends 'layout-vertical.html' %}
+{% load static %}
+
+{% block header %}
+    时间序列模型：{{ model_name }}
+{% endblock %}
+
+{% block title %}
+    <div class="page-pretitle">
+        {{ model_name }}
+    </div>
+    <h2 class="page-title">
+        {{ model_en_name }}
+    </h2>
+{% endblock %}
+
+{% block body %}
+
+    <div class="col-md-12 col-lg-9">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{ model_name }}</h3>
+                <p class="text-muted">在这里是使用{{ model_name }}进行的结果</p>
+                <p class="text-muted">{{ model_info }}</p>
+                <p>共拟合出{{ model_table|length }}个结果如下</p>
+                <table class="table table-vcenter card-table">
+                    <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>ModelParameters</th>
+                        <th>TransformationParameters</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for model_line in model_table %}
+                        <tr>
+                            <td class="text-muted">
+                                {{ model_name }}
+                            </td>
+                            <td class="text-muted">
+                                {{ model_line.0 }}
+                            </td>
+                            <td class="text-muted">
+                                {{ model_line.1 }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+                <div id="main4" style="width: 100%;height:400px;"></div>
+                <script type="text/javascript">
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart4 = echarts.init(document.getElementById('main4'));
+                    window.addEventListener('resize', function () {
+                        myChart4.resize();
+                    });
+                    var option = {{ option|safe }}
+                        myChart4.setOption(option)
+
+                </script>
+            </div>
+            <!-- Card footer -->
+            <div class="card-footer">
+                <a href="/main/" class="btn btn-primary">返回</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

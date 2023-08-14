@@ -1,0 +1,134 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>{% block header %}{% endblock %}</title>
+    <!-- CSS files -->
+    <link href="{% static 'css/tabler.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/tabler-flags.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/tabler-payments.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/tabler-vendors.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/demo.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/dropzone.css' %}" rel="stylesheet"/>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+
+        :root {
+            --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<script src="{% static 'js/demo-theme.min.js' %}"></script>
+<script src="{% static 'js/echarts.min.js' %}"></script>
+<div class="page">
+    <!-- Sidebar -->
+    <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+
+            <h1 class="navbar-brand navbar-brand-autodark">
+                各种时间序列模型
+            </h1>
+
+            <div class="collapse navbar-collapse" id="sidebar-menu">
+                <ul class="navbar-nav pt-lg-3">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/main/">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline
+                            points="5 12 3 12 12 3 21 12 19 12"></polyline><path
+                            d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path
+                            d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg>
+                  </span>
+                            <span class="nav-link-title">
+                    主页
+                  </span>
+                        </a>
+                    </li>
+                    {% for k, v in APPLIED_MODELS.items %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/{{ v }}/">
+
+
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline
+                            points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline><line x1="12" y1="12"
+                                                                                                  x2="20"
+                                                                                                  y2="7.5"></line><line
+                            x1="12" y1="12" x2="12" y2="21"></line><line x1="12" y1="12" x2="4" y2="7.5"></line><line
+                            x1="16" y1="5.25" x2="8" y2="9.75"></line></svg>
+                  </span>
+                                <span class="nav-link-title">
+                    {{ k }}
+                  </span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <div class="page-wrapper">
+        <!-- Page header -->
+        <div class="page-header d-print-none">
+            <div class="container-xl">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <!-- Page pre-title -->
+                        {% block title %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page body -->
+        <div class="page-body">
+            <div class="container-xl">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+        <footer class="footer footer-transparent d-print-none">
+            <div class="container-xl">
+                <div class="row text-center align-items-center flex-row-reverse">
+                    <div class="col-lg-auto ms-lg-auto">
+                    </div>
+                    <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                        <ul class="list-inline list-inline-dots mb-0">
+                            <li class="list-inline-item">
+                                山东大学威海数科班
+                                重案六组
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="./changelog.html" class="link-secondary" rel="noopener">
+                                    七月部分
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<!-- Libs JS -->
+<script src="{% static 'js/jquery-3.6.1.js' %}"></script>
+<script src="{% static 'js/tabler.min.js' %}" defer></script>
+<script src="{% static 'js/demo.min.js' %}" defer></script>
+<script src="{% static 'js/echarts.min.js' %}"></script>
+<script src="{% static 'js/echarts-gl.min.js' %}"></script>
+<script src="{% static 'js/ecStat.min.js' %}"></script>
+<script src="{% static 'js/ecSimpleTransform.min.js' %}"></script>
+{% block js %}
+
+{% endblock %}
+
+</body>
+</html>
