@@ -1,0 +1,93 @@
+{% extends 'control_template.html' %}
+
+{% load static %}
+
+{% block title_in %}
+    上传界面
+{% endblock %}
+
+{% block content_in %}
+    <div class="row row-cards">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">上传User.json</h3>
+                    <form class="dropzone dz-clickable" id="dropzone-default-user" action="/control/upload/0/" autocomplete="off"
+                          novalidate="">
+
+                        <div class="dz-default dz-message">
+                            <button class="dz-button" type="button">请</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">上传Feed.json</h3>
+                    <form class="dropzone dz-clickable" id="dropzone-default-feed" action="/control/upload/1/" autocomplete="off"
+                          novalidate="">
+
+                        <div class="dz-default dz-message">
+                            <button class="dz-button" type="button">请</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">上传Comment.json</h3>
+                    <form class="dropzone dz-clickable" id="dropzone-default-comment" action="/control/upload/2/" autocomplete="off"
+                          novalidate="">
+
+                        <div class="dz-default dz-message">
+                            <button class="dz-button" type="button">请</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">上传Attachment.json</h3>
+                    <form class="dropzone dz-clickable" id="dropzone-default-attachment" action="/control/upload/3/" autocomplete="off"
+                          novalidate="">
+
+                        <div class="dz-default dz-message">
+                            <button class="dz-button" type="button">请</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/dropzone-min.js' %}" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Dropzone("#dropzone-default-user")
+        })
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Dropzone("#dropzone-default-feed")
+        })
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Dropzone("#dropzone-default-comment")
+        })
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Dropzone("#dropzone-default-attachment")
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'ancestor_template.html' %}
+
+{% block content %}
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <div class="text-center mb-4">
+                <a href="." class="navbar-brand navbar-brand-autodark"><img src="./static/logo.svg" height="36" alt=""></a>
+            </div>
+            <div class="card card-md">
+                <div class="card-body">
+                    <h2 class="h2 text-center mb-4">登录数据控制台</h2>
+                    <form action="./" method="post" autocomplete="off" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label">用户邮箱</label>
+                            <input type="email" class="form-control" placeholder="你的@邮箱.com" autocomplete="off" name="email">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">
+                                密码
+                            </label>
+                            <input type="password" class="form-control" placeholder="密码" autocomplete="off" name="password">
+                        </div>
+                        {% csrf_token %}
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-primary w-100">登录</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

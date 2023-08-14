@@ -1,0 +1,43 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>大作业第四学期 - 可视化</title>
+    <!-- CSS files -->
+    <link href="{% static 'css/tabler.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/tabler-flags.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/tabler-payments.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/tabler-vendors.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/demo.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/dropzone.css' %}" rel="stylesheet"/>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+
+        :root {
+            --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+    </style>
+</head>
+<body class=" border-top-wide border-primary d-flex flex-column">
+<script src="{% static 'js/demo-theme.min.js' %}"></script>
+<script src="{% static 'js/echarts.min.js' %}"></script>
+
+{% block content %}
+
+{% endblock %}
+<script src="{% static 'js/jquery-3.6.1.js' %}"></script>
+<script src="{% static 'js/tabler.min.js' %}" defer></script>
+<script src="{% static 'js/demo.min.js' %}" defer></script>
+<script src="{% static 'js/echarts.min.js' %}"></script>
+<script src="{% static 'js/echarts-gl.min.js' %}"></script>
+<script src="{% static 'js/ecStat.min.js' %}"></script>
+<script src="{% static 'js/ecSimpleTransform.min.js' %}"></script>
+{% block js %}
+
+{% endblock %}
+</body>
+</html>

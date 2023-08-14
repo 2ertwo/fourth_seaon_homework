@@ -1,0 +1,1131 @@
+{% extends 'control_template.html' %}
+
+{% block content_in %}
+    <div class="row row-cards">
+        <div class="col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">单风机多指标折线图</h3>
+                </div>
+                <div class="card-body">
+                    <form id="form_1">
+                        <div class="mb-3">
+                            <div class="form-label">选择风机</div>
+                            <select class="form-select" name="index">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">起始时间</label>
+                            <input type="text" class="form-control" name="day_start"
+                                   placeholder="格式示例20210202" value="20210202">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">结束时间</label>
+                            <input type="text" class="form-control" name="day_end"
+                                   placeholder="格式示例20210203" value="20210203">
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-primary w-100" id="button_1">
+                                提交
+                            </a>
+                        </div>
+                    </form>
+
+                    <div id="main1" style="width: 100%;height:400px;"></div>
+                    <script type="text/javascript">
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart1 = echarts.init(document.getElementById('main1'));
+                        window.addEventListener('resize', function () {
+                            myChart1.resize();
+                        });
+
+                        // 指定图表的配置项和数据
+
+                    </script>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">多风机多指标离差标准化箱线图</h3>
+                </div>
+                <div class="card-body">
+                    <form id="form_2">
+                        <div class="mb-3">
+                            <div class="form-label">选择风机</div>
+
+                            {% for motor in motor_list %}
+                                <label class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="has_{{ motor }}"
+                                           value="{{ motor }}">
+                                    <span class="form-check-label">风机{{ motor }}</span>
+                                </label>
+                            {% endfor %}
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">起始时间</label>
+                            <input type="text" class="form-control" name="day_start"
+                                   placeholder="格式示例20210202" value="20210202">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">结束时间</label>
+                            <input type="text" class="form-control" name="day_end"
+                                   placeholder="格式示例20210203" value="20210203">
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-primary w-100" id="button_2">
+                                提交
+                            </a>
+                        </div>
+                    </form>
+                    <div id="main2" style="width: 100%;height:400px;"></div>
+                    <script type="text/javascript">
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart2 = echarts.init(document.getElementById('main2'));
+                        window.addEventListener('resize', function () {
+                            myChart2.resize();
+                        });
+
+                        // 指定图表的配置项和数据
+
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">多风机多指标平行线图</h3>
+                </div>
+                <div class="card-body">
+                    <form id="form_3">
+                        <div class="mb-3">
+                            <div class="form-label">选择风机</div>
+
+                            {% for motor in motor_list %}
+                                <label class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="has_{{ motor }}"
+                                           value="{{ motor }}">
+                                    <span class="form-check-label">风机{{ motor }}</span>
+                                </label>
+                            {% endfor %}
+
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">起始时间</label>
+                            <input type="text" class="form-control" name="day_start"
+                                   placeholder="格式示例20210202" value="20210202">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">结束时间</label>
+                            <input type="text" class="form-control" name="day_end"
+                                   placeholder="格式示例20210203" value="20210203">
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-primary w-100" id="button_3">
+                                提交
+                            </a>
+                        </div>
+                    </form>
+                    <div id="main3" style="width: 100%;height:400px;"></div>
+                    <script type="text/javascript">
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart3 = echarts.init(document.getElementById('main3'));
+                        window.addEventListener('resize', function () {
+                            myChart3.resize();
+                        });
+
+                        // 指定图表的配置项和数据
+
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">单风机单指标按日聚合日历图</h3>
+                </div>
+                <div class="card-body">
+                    <form id="form_4">
+                        <div class="mb-3">
+                            <div class="form-label">选择风机</div>
+                            <select class="form-select" name="index">
+                                {% for motor in motor_list %}
+                                    <option value="{{ motor }}">{{ motor }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-label">选择指标</div>
+                            <select class="form-select" name="col">
+                                {% for col in col_list %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-label">选择按日聚合方法</div>
+                            <select class="form-select" name="method">
+
+                                <option value="max">max</option>
+                                <option value="min">min</option>
+                                <option value="mean">mean</option>
+                                <option value="sum">sum</option>
+                                <option value="std">std</option>
+                                <option value="median">median</option>
+                                <option value="var">var</option>
+
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-primary w-100" id="button_4">
+                                提交
+                            </a>
+                        </div>
+                    </form>
+                    <div id="main4" style="width: 100%;height:400px;"></div>
+                    <script type="text/javascript">
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart4 = echarts.init(document.getElementById('main4'));
+                        window.addEventListener('resize', function () {
+                            myChart4.resize();
+                        });
+
+                        // 指定图表的配置项和数据
+
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">多风机双指标散点图及均值柱状图</h3>
+                </div>
+                <div class="card-body">
+                    <form id="form_5">
+                        <div class="mb-3">
+                            <div class="form-label">选择风机</div>
+
+                            {% for motor in motor_list %}
+                                <label class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="has_{{ motor }}"
+                                           value="{{ motor }}">
+                                    <span class="form-check-label">风机{{ motor }}</span>
+                                </label>
+                            {% endfor %}
+
+
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-label">选择指标1</div>
+                            <select class="form-select" name="col_1">
+                                {% for col in col_list %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-label">选择指标2</div>
+                            <select class="form-select" name="col_2">
+                                {% for col in col_list %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">起始时间</label>
+                            <input type="text" class="form-control" name="day_start"
+                                   placeholder="格式示例20210202" value="20210202">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">结束时间</label>
+                            <input type="text" class="form-control" name="day_end"
+                                   placeholder="格式示例20210203" value="20210203">
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-primary w-100" id="button_5">
+                                提交
+                            </a>
+                        </div>
+                    </form>
+                    <div id="main5" style="width: 100%;height:400px;"></div>
+                    <script type="text/javascript">
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart5 = echarts.init(document.getElementById('main5'));
+                        window.addEventListener('resize', function () {
+                            myChart5.resize();
+                        });
+
+                        // 指定图表的配置项和数据
+
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">单风机单指标按日聚合瀑布图</h3>
+                </div>
+                <div class="card-body">
+                    <form id="form_6">
+                        <div class="mb-3">
+                            <div class="form-label">选择风机</div>
+                            <select class="form-select" name="index">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">起始时间</label>
+                            <input type="text" class="form-control" name="day_start"
+                                   placeholder="格式示例20210202" value="20210202">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">结束时间</label>
+                            <input type="text" class="form-control" name="day_end"
+                                   placeholder="格式示例20210223" value="20210223">
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-label">选择指标</div>
+                            <select class="form-select" name="col">
+                                {% for col in col_list %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-label">选择按日聚合方法</div>
+                            <select class="form-select" name="method">
+
+                                <option value="max">max</option>
+                                <option value="min">min</option>
+                                <option value="mean">mean</option>
+                                <option value="sum">sum</option>
+                                <option value="std">std</option>
+                                <option value="median">median</option>
+                                <option value="var">var</option>
+
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-primary w-100" id="button_6">
+                                提交
+                            </a>
+                        </div>
+                    </form>
+
+                    <div id="main6" style="width: 100%;height:400px;"></div>
+                    <script type="text/javascript">
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart6 = echarts.init(document.getElementById('main6'));
+                        window.addEventListener('resize', function () {
+                            myChart6.resize();
+                        });
+
+                        // 指定图表的配置项和数据
+
+                    </script>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">单风机全指标相关矩阵</h3>
+                </div>
+                <div class="card-body">
+                    <form id="form_7">
+                        <div class="mb-3">
+                            <div class="form-label">选择风机</div>
+                            <select class="form-select" name="index">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-primary w-100" id="button_7">
+                                提交
+                            </a>
+                        </div>
+                    </form>
+
+                    <div id="main7" style="width: 100%;height:400px;"></div>
+                    <script type="text/javascript">
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart7 = echarts.init(document.getElementById('main7'));
+                        window.addEventListener('resize', function () {
+                            myChart7.resize();
+                        });
+
+                        // 指定图表的配置项和数据
+
+                    </script>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">多风机多指标散点矩阵</h3>
+                </div>
+                <div class="card-body">
+                    <form id="form_8">
+                        <div class="mb-3">
+                            <div class="form-label">选择风机</div>
+
+                            {% for motor in motor_list %}
+                                <label class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="has_{{ motor }}"
+                                           value="{{ motor }}">
+                                    <span class="form-check-label">风机{{ motor }}</span>
+                                </label>
+                            {% endfor %}
+
+
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-label">选择指标</div>
+
+                            {% for col in col_list %}
+                                <label class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="is_{{ col }}"
+                                           value="{{ col }}">
+                                    <span class="form-check-label">{{ col }}</span>
+                                </label>
+                            {% endfor %}
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">起始时间</label>
+                            <input type="text" class="form-control" name="day_start"
+                                   placeholder="格式示例20210202" value="20210202">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">结束时间</label>
+                            <input type="text" class="form-control" name="day_end"
+                                   placeholder="格式示例20210213" value="20210213">
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-primary w-100" id="button_8">
+                                提交
+                            </a>
+                        </div>
+                    </form>
+                    <div id="main8" style="width: 100%;height:400px;"></div>
+                    <script type="text/javascript">
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart8 = echarts.init(document.getElementById('main8'));
+                        window.addEventListener('resize', function () {
+                            myChart8.resize();
+                        });
+
+                        // 指定图表的配置项和数据
+
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+
+        $("#button_1").click(function () {
+            $.ajax({
+                type: "GET",   //提交的方法
+                url: "/get_data/stacked_lines/", //提交的地址
+                data: $('#form_1').serialize(),// 序列化表单值
+                async: false,
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    var option = {
+                        title: {
+                            text: '单风机多指标'
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: data['legend'],
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
+                        xAxis: data['xAxis'],
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: data['series']
+                    };
+                    myChart1.setOption(option, true)
+                }
+            });
+        });
+
+        $("#button_2").click(function () {
+            $.ajax({
+                type: "GET",   //提交的方法
+                url: "/get_data/boxplot/", //提交的地址
+                data: $('#form_2').serialize(),// 序列化表单值
+                async: false,
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    var dataset = data['dataset']
+                    for (let i = dataset.length / 2; i < dataset.length; i++) {
+                        dataset[i]['transform']['config'] = {
+                            'itemNameFormatter': function (params) {
+                                switch (params.value) {
+                                    {% for col in col_list %}
+                                        {% if forloop.counter0 <= 8 %}
+                                            case {{ forloop.counter0 }}:
+                                                return '{{ col }}'
+                                                break;
+                                        {% else %}
+                                            default:
+                                                return '{{ col }}'
+                                        {% endif %}
+                                    {% endfor %}
+                                }
+                            }
+                        };
+                    }
+                    option = {
+                        title: {
+                            text: 'Multiple Categories',
+                            left: 'center'
+                        },
+                        dataset: data['dataset'],
+                        legend: {
+                            top: '10%'
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        grid: {
+                            left: '10%',
+                            top: '20%',
+                            right: '10%',
+                            bottom: '15%'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: true,
+                            nameGap: 0,
+                            splitArea: {
+                                show: true
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            name: 'Value',
+                            min: 0,
+                            max: 1.1,
+                            splitArea: {
+                                show: false
+                            }
+                        },
+                        dataZoom: [
+                            {
+                                type: 'inside',
+                                start: 0,
+                                end: 20,
+                                xAxisIndex: [0],
+                            },
+                            {
+                                show: true,
+                                type: 'slider',
+                                top: '90%',
+                                xAxisIndex: [0],
+                                start: 0,
+                                end: 20
+                            },
+                            {
+                                type: 'inside',
+                                start: 0,
+                                end: 100,
+                                yAxisIndex: [0],
+                            },
+                            {
+                                show: true,
+                                type: 'slider',
+                                top: '10%',
+                                yAxisIndex: [0],
+                                start: 0,
+                                end: 100
+                            },
+
+                        ],
+                        series: data['series']
+                    }
+                    ;
+                    myChart2.setOption(option, true);
+
+
+                }
+
+
+            });
+        })
+        ;
+
+        $("#button_3").click(function () {
+            $.ajax({
+                type: "GET",   //提交的方法
+                url: "/get_data/parallel_lines/", //提交的地址
+                data: $('#form_3').serialize(),// 序列化表单值
+                dataType: 'json',
+                async: false,
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    var schema = [
+                        {name: 'WINDSPEED', index: 0, text: 'WINDSPEED'},
+                        {name: 'PREPOWE', index: 1, text: 'PREPOWE'},
+                        {name: 'WINDDIRECTION', index: 2, text: 'WINDDIRECTION'},
+                        {name: 'TEMPERATURE', index: 3, text: 'TEMPERATURE'},
+                        {name: 'HUMIDITY', index: 4, text: 'HUMIDITY'},
+                        {name: 'PRESSURE', index: 5, text: 'PRESSURE'},
+                        {name: "ROUND(A.WS,1)", index: 6, text: 'ROUND(A.WS,1)'},
+                        {name: "ROUND(A.POWER,0)", index: 7, text: 'ROUND(A.POWER,0)'},
+                        {name: 'YD15', index: 8, text: 'YD15'},
+                    ];
+                    option = {
+                        backgroundColor: '#333',
+                        legend: {
+                            bottom: 30,
+                            data: data['legend_data'],
+                            itemGap: 20,
+                            textStyle: {
+                                color: '#fff',
+                                fontSize: 14
+                            }
+                        },
+                        tooltip: {
+                            padding: 10,
+                            backgroundColor: '#222',
+                            borderColor: '#777',
+                            borderWidth: 1
+                        },
+                        parallelAxis: [
+                            {
+                                dim: 0,
+                                name: schema[0].text
+                            },
+                            {dim: 1, name: schema[1].text},
+                            {dim: 2, name: schema[2].text},
+                            {dim: 3, name: schema[3].text},
+                            {dim: 4, name: schema[4].text},
+                            {dim: 5, name: schema[5].text},
+                            {dim: 6, name: schema[6].text},
+                            {dim: 7, name: schema[7].text},
+                            {dim: 8, name: schema[8].text},
+                        ],
+                        visualMap: {
+                            show: true,
+                            min: 0,
+                            max: 150,
+                            dimension: 2,
+                            inRange: {
+                                color: ['#d94e5d', '#eac736', '#50a3ba'].reverse()
+                                // colorAlpha: [0, 1]
+                            }
+                        },
+                        parallel: {
+                            left: '5%',
+                            right: '18%',
+                            bottom: 100,
+                            parallelAxisDefault: {
+                                type: 'value',
+                                name: 'AQI指数',
+                                nameLocation: 'end',
+                                nameGap: 20,
+                                nameTextStyle: {
+                                    color: '#fff',
+                                    fontSize: 12
+                                },
+                                axisLine: {
+                                    lineStyle: {
+                                        color: '#aaa'
+                                    }
+                                },
+                                axisTick: {
+                                    lineStyle: {
+                                        color: '#777'
+                                    }
+                                },
+                                splitLine: {
+                                    show: false
+                                },
+                                axisLabel: {
+                                    color: '#fff'
+                                }
+                            }
+                        },
+                        series: data['series']
+                    };
+                    myChart3.setOption(option, true)
+                }
+            });
+        });
+
+        $("#button_4").click(function () {
+            $.ajax({
+                type: "GET",   //提交的方法
+                url: "/get_data/calendar/", //提交的地址
+                data: $('#form_4').serialize(),// 序列化表单值
+                async: false,
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    option = {
+                        tooltip: {
+                            position: 'top'
+                        },
+                        visualMap: {
+                            min: data['value_min'],
+                            max: data['value_max'],
+                            calculable: true,
+                            orient: 'horizontal',
+                            left: 'center',
+                            top: 'top'
+                        },
+                        calendar: data['calendar'],
+                        series: data['series']
+                    };
+                    myChart4.setOption(option);
+                }
+            });
+        });
+        $("#button_5").click(function () {
+            $.ajax({
+                type: "GET",   //提交的方法
+                url: "/get_data/hist_3d/", //提交的地址
+                data: $('#form_5').serialize(),// 序列化表单值
+                async: false,
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    var scatter_series = data['scatter_series']
+                    for (var i = 0; i < scatter_series.length; i++) {
+                        scatter_series[i]['universalTransition'] = {
+                            enabled: true,
+                            delay: function (idx, count) {
+                                return Math.random() * 400;
+                            }
+                        }
+                    }
+                    console.log(scatter_series)
+
+                    const scatterOption = (option = {
+                        xAxis: {
+                            scale: true
+                        },
+                        yAxis: {
+                            scale: true
+                        },
+                        series: scatter_series
+                    });
+                    const barOption = {
+                        xAxis: {
+                            type: 'category',
+                            data: data['bar_x_axis_data']
+                        },
+                        yAxis: {},
+                        series: [
+                            {
+                                type: 'bar',
+                                id: 'total',
+                                data: data['bar_series_data'],
+                                universalTransition: {
+                                    enabled: true,
+                                    seriesKey: data['bar_x_axis_data'],
+                                    delay: function (idx, count) {
+                                        return Math.random() * 400;
+                                    }
+                                }
+                            }
+                        ]
+                    };
+                    let currentOption = scatterOption;
+                    setInterval(function () {
+                        currentOption = currentOption === scatterOption ? barOption : scatterOption;
+                        myChart5.setOption(currentOption, true);
+                    }, 2000);
+
+                }
+            });
+        });
+
+        $("#button_6").click(function () {
+            $.ajax({
+                type: "GET",   //提交的方法
+                url: "/get_data/water_fall/", //提交的地址
+                data: $('#form_6').serialize(),// 序列化表单值
+                async: false,
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    var option = {
+                        title: {
+                            text: '瀑布图'
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            },
+                            formatter: function (params) {
+                                let tar;
+                                if (params[1] && params[1].value !== '-') {
+                                    tar = params[1];
+                                } else {
+                                    tar = params[2];
+                                }
+                                return tar && tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+                            }
+                        },
+                        legend: {
+                            data: ['较前日提升', '较前日下降']
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: data['x_axis_data']
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [
+                            {
+                                name: 'Placeholder',
+                                type: 'bar',
+                                stack: 'Total',
+                                silent: true,
+                                itemStyle: {
+                                    borderColor: 'transparent',
+                                    color: 'transparent'
+                                },
+                                emphasis: {
+                                    itemStyle: {
+                                        borderColor: 'transparent',
+                                        color: 'transparent'
+                                    }
+                                },
+                                data: data['placeholder']
+                            },
+                            {
+                                name: '较前日提升',
+                                type: 'bar',
+                                stack: 'Total',
+                                label: {
+                                    show: true,
+                                    position: 'top'
+                                },
+                                data: data['up']
+                            },
+                            {
+                                name: '较前日下降',
+                                type: 'bar',
+                                stack: 'Total',
+                                label: {
+                                    show: true,
+                                    position: 'bottom'
+                                },
+                                data: data['down']
+                            }
+                        ]
+                    };
+                    myChart6.setOption(option, true)
+                }
+            });
+        });
+
+        $("#button_7").click(function () {
+            $.ajax({
+                type: "GET",   //提交的方法
+                url: "/get_data/corr_matrix/", //提交的地址
+                data: $('#form_7').serialize(),// 序列化表单值
+                async: false,
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    option = {
+                        tooltip: {
+                            position: 'top'
+                        },
+                        grid: {
+                            height: '50%',
+                            top: '10%'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: {{ col_list|safe }},
+                            splitArea: {
+                                show: true
+                            }
+                        },
+                        yAxis: {
+                            type: 'category',
+                            data: {{ col_list|safe }},
+                            splitArea: {
+                                show: true
+                            }
+                        },
+                        visualMap: {
+                            min: -1,
+                            max: 1,
+                            calculable: true,
+                            orient: 'horizontal',
+                            left: 'center',
+                            bottom: '15%'
+                        },
+                        series: [
+                            {
+                                name: 'Punch Card',
+                                type: 'heatmap',
+                                data: data['corr_matrix'],
+                                label: {
+                                    show: true
+                                },
+                                emphasis: {
+                                    itemStyle: {
+                                        shadowBlur: 10,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            }
+                        ]
+                    };
+                    myChart7.setOption(option, true)
+                }
+            });
+        });
+        $("#button_8").click(function () {
+            $.ajax({
+                type: "GET",   //提交的方法
+                url: "/get_data/scatter_matrix/", //提交的地址
+                data: $('#form_8').serialize(),// 序列化表单值
+                async: false,
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    const rawData = data['raw_data'];
+                    const CATEGORY_DIM_COUNT = data['category_dim_count'];
+                    const GAP = 2;
+                    const BASE_LEFT = 0;
+                    const BASE_TOP = 10;
+                    const GRID_WIDTH = (100 - BASE_LEFT - GAP) / CATEGORY_DIM_COUNT - GAP;
+                    const GRID_HEIGHT = (100 - BASE_TOP - GAP) / CATEGORY_DIM_COUNT - GAP;
+                    const CATEGORY_DIM = data['category_dim'];
+                    const SYMBOL_SIZE = 4;
+
+                    function retrieveScatterData(data, dimX, dimY) {
+                        let result = [];
+                        for (let i = 0; i < data.length; i++) {
+                            let item = [data[i][dimX], data[i][dimY]];
+                            item[CATEGORY_DIM] = data[i][CATEGORY_DIM];
+                            result.push(item);
+                        }
+                        return result;
+                    }
+
+                    function generateGrids() {
+                        let index = 0;
+                        const grid = [];
+                        const xAxis = [];
+                        const yAxis = [];
+                        const series = [];
+                        for (let i = 0; i < CATEGORY_DIM_COUNT; i++) {
+                            for (let j = 0; j < CATEGORY_DIM_COUNT; j++) {
+                                if (CATEGORY_DIM_COUNT - i + j >= CATEGORY_DIM_COUNT) {
+                                    continue;
+                                }
+                                grid.push({
+                                    left: BASE_LEFT + i * (GRID_WIDTH + GAP) + '%',
+                                    top: BASE_TOP + j * (GRID_HEIGHT + GAP) + '%',
+                                    width: GRID_WIDTH + '%',
+                                    height: GRID_HEIGHT + '%'
+                                });
+                                xAxis.push({
+                                    splitNumber: 3,
+                                    position: 'top',
+                                    axisLine: {
+                                        show: j === 0,
+                                        onZero: false
+                                    },
+                                    axisTick: {
+                                        show: j === 0,
+                                        inside: true
+                                    },
+                                    axisLabel: {
+                                        show: j === 0
+                                    },
+                                    type: 'value',
+                                    gridIndex: index,
+                                    scale: true
+                                });
+                                yAxis.push({
+                                    splitNumber: 3,
+                                    position: 'right',
+                                    axisLine: {
+                                        show: i === CATEGORY_DIM_COUNT - 1,
+                                        onZero: false
+                                    },
+                                    axisTick: {
+                                        show: i === CATEGORY_DIM_COUNT - 1,
+                                        inside: true
+                                    },
+                                    axisLabel: {
+                                        show: i === CATEGORY_DIM_COUNT - 1
+                                    },
+                                    type: 'value',
+                                    gridIndex: index,
+                                    scale: true
+                                });
+                                series.push({
+                                    type: 'scatter',
+                                    symbolSize: SYMBOL_SIZE,
+                                    xAxisIndex: index,
+                                    yAxisIndex: index,
+                                    data: retrieveScatterData(rawData, i, j)
+                                });
+                                index++;
+                            }
+                        }
+                        return {
+                            grid,
+                            xAxis,
+                            yAxis,
+                            series
+                        };
+                    }
+
+                    const gridOption = generateGrids();
+                    console.log(gridOption)
+                    option = {
+                        animation: false,
+                        brush: {
+                            brushLink: 'all',
+                            xAxisIndex: gridOption.xAxis.map(function (_, idx) {
+                                return idx;
+                            }),
+                            yAxisIndex: gridOption.yAxis.map(function (_, idx) {
+                                return idx;
+                            }),
+                            inBrush: {
+                                opacity: 1
+                            }
+                        },
+                        visualMap: {
+                            type: 'piecewise',
+                            categories: data['categories'],
+                            dimension: CATEGORY_DIM,
+                            orient: 'horizontal',
+                            top: 0,
+                            left: 'center',
+                            inRange: {
+                                color: data['colors']
+                            },
+                            outOfRange: {
+                                color: '#ddd'
+                            },
+                            seriesIndex: gridOption.series.map(function (_, idx) {
+                                return idx;
+                            })
+                        },
+                        tooltip: {
+                            trigger: 'item'
+                        },
+                        xAxis: gridOption.xAxis,
+                        yAxis: gridOption.yAxis,
+                        grid: gridOption.grid,
+                        series: [
+                            ...gridOption.series
+                        ]
+                    };
+                    myChart8.setOption(option, true)
+                }
+            });
+        });
+
+    </script>
+{% endblock %}
+
+{% block title_in %}
+    风电数据可视化
+{% endblock %}
